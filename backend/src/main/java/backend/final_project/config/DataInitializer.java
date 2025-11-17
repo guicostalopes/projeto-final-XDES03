@@ -1,13 +1,15 @@
 package backend.final_project.config;
 
-import backend.final_project.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.logging.Logger;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import backend.final_project.entity.enums.*;
-import backend.final_project.entity.UserEntity; 
-import java.util.logging.Logger; // Usei o logger do Java, mas SLF4J é melhor
+
+import backend.final_project.entity.UserEntity;
+import backend.final_project.entity.enums.Role;
+import backend.final_project.repository.UserRepository;
+import lombok.RequiredArgsConstructor; 
 
 @Component
 @RequiredArgsConstructor
@@ -28,14 +30,14 @@ public class DataInitializer implements CommandLineRunner{
             
             logger.info("Nenhum usuário 'admin' encontrado. Criando um novo...");
 
-        UserEntity admin = UserEntity.builder()
-            .username(adminUsername)
-            .email("admin@gmail.com")
-            .password(passwordEncoder.encode("1234")) 
-            .role(Role.ADMIN)
-            .build();
+            UserEntity admin = UserEntity.builder()
+                    .username(adminUsername)
+                    .email("admin@admin.com") 
+                    .password(passwordEncoder.encode("admin123")) 
+                    .role(Role.ADMIN)
+                    .build();
 
-        userRepository.save(admin);
+            userRepository.save(admin);
             
             logger.info("Usuário 'admin' criado com sucesso!");
         } else {
