@@ -23,8 +23,8 @@ public class AuthService {
         if(userRepository.findByEmail(request.getEmail()).isPresent()){
             throw new RuntimeException("Email já cadastrado!");
         }
-
-        if(userRepository.findByUsername(request.getUsername()).isPresent()){
+        
+        if(userRepository.findByDisplayName(request.getUsername()).isPresent()){
             throw new RuntimeException("Nome de usuário já cadastrado!");
         }
         
@@ -38,7 +38,7 @@ public class AuthService {
 
         UserEntity newUser = 
             UserEntity.builder()
-            .username(request.getUsername())
+            .displayName(request.getUsername())
             .email(request.getEmail())
             .password(hashedPassword)
             .role(request.getRole())
@@ -53,7 +53,7 @@ public class AuthService {
     private UserResponseDTO mapToUserResponseDTO(UserEntity user){
         UserResponseDTO dto = new UserResponseDTO();
         dto.setId(user.getId());
-        dto.setUsername(user.getUsername());
+        dto.setUsername(user.getDisplayName()); 
         dto.setEmail(user.getEmail());
         dto.setRole(user.getRole());
         return dto;

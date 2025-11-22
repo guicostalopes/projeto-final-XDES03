@@ -30,7 +30,7 @@ public class UserEntity implements UserDetails {
     private UUID id;
     
     @Column(unique = true, updatable = true)
-    private String username; 
+    private String displayName; 
     
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -50,9 +50,9 @@ public class UserEntity implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    @Override
+   @Override
     public String getUsername() {
-        return this.email;
+        return this.email; 
     }
 
     @Override

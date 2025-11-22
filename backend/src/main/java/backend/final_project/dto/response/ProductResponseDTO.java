@@ -7,7 +7,7 @@ import java.util.UUID;
 public class ProductResponseDTO {
 
     private UUID id;
-    private String name;
+    private String productName;
     private Float price;
     private int quantity;
     private String category;

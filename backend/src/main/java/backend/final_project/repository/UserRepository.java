@@ -9,7 +9,7 @@ import backend.final_project.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
-    Optional<UserEntity> findByUsername(String username);
+    
     Optional<UserEntity> findByEmail(String email);
-    Optional<UserEntity> findByPassword(String password);
+    Optional<UserEntity> findByDisplayName(String displayName);
 }

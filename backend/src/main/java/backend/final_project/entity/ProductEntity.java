@@ -26,7 +26,7 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Column(unique = true, updatable = true)
-    private String name;
+    private String productName;
     @Column(updatable = true)
     private Float price;
     @Column(updatable = true)

@@ -7,7 +7,6 @@ import backend.final_project.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -28,7 +27,7 @@ public class ProductService {
 
     public ProductResponseDTO createProduct(ProductRequestDTO request) {
         ProductEntity newProduct = ProductEntity.builder()
-                .name(request.getName())
+                .productName(request.getName())
                 .price(request.getPrice())
                 .quantity(request.getQuantity())
                 .category(request.getCategory())
@@ -43,7 +42,7 @@ public class ProductService {
     public ProductResponseDTO updateProduct(UUID id, ProductRequestDTO request) {
         ProductEntity productToUpdate = findProductById(id);
 
-        productToUpdate.setName(request.getName());
+        productToUpdate.setProductName(request.getName());
         productToUpdate.setPrice(request.getPrice());
         productToUpdate.setQuantity(request.getQuantity());
         productToUpdate.setCategory(request.getCategory());
@@ -67,7 +66,7 @@ public class ProductService {
     private ProductResponseDTO mapToResponseDTO(ProductEntity product) {
         ProductResponseDTO dto = new ProductResponseDTO();
         dto.setId(product.getId());
-        dto.setName(product.getName());
+        dto.setProductName(product.getProductName());
         dto.setPrice(product.getPrice());
         dto.setQuantity(product.getQuantity());
         dto.setCategory(product.getCategory());

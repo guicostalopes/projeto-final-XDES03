@@ -1,22 +1,36 @@
 import { useState } from 'react';
 import { newLogin } from "../../Service/AutenticationService";
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginForms.css';
 
 const LoginForms = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault(); 
+    setError(null);
+
     console.log('Enviando login com:', { email, password });
 
     const data = await newLogin(email, password);
 
-    if (data) {
+    if (data && data.token) {
       console.log('Login bem sucedido!', data.token);
+
+      localStorage.setItem('user_token', data.token);
+      localStorage.setItem('user_username', data.username);
+      localStorage.setItem('user_role', data.role);
+      localStorage.setItem('user_starWarsCharacter', data.starWarsCharacter);
+      navigate(`/${data.username}/products`);
+
     } else {
       console.error('Falha no login');
+      setError('E-mail ou senha inválidos.');
     }
   };
 
@@ -57,6 +71,12 @@ const LoginForms = () => {
           <button type="submit">Entrar</button>
         </div>
         
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
+
         <div className='container-register'>
           <p>Ainda não tem conta?
             <a 
