@@ -1,4 +1,5 @@
 package backend.final_project.service;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,9 +10,8 @@ import backend.final_project.entity.enums.Role;
 
 @Service
 public class RoleService {
-    public List<Role>getSelectableRoles(){
+    public List<Role> getSelectableRoles(){
         return Arrays.stream(Role.values())
-        .filter(role -> role != Role.ADMIN)
-        .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }
