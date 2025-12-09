@@ -11,7 +11,6 @@ public class ProductRequestDTO {
 
     @NotBlank(message = "O nome do produto não pode estar em branco.")
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres.")
-    // 👇 MUDE DE 'productName' PARA 'name'
     private String name; 
 
     @Positive(message = "O preço deve ser um valor positivo.")

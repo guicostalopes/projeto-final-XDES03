@@ -1,22 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginForms from "./components/Login/LoginForms.jsx";
-import RegistrationForm from "./components/Register/RegisterForm.jsx"; 
-import './index.css'; 
-import ProductPage from "./components/ProductPage/ProductPage.jsx";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage'; 
+import ProductsPage from './pages/ProductsPage'; 
 
-const App = () => {
-    return (
-        <BrowserRouter>
-            <div className="container-centralizado"> 
-                <Routes>
-                    <Route path="/login" element={<LoginForms />} />
-                    <Route path="/register" element={<RegistrationForm />} />
-                    <Route path="/" element={<LoginForms />} />
-                    <Route path="/:username/products" element={<ProductPage/>} />
-                </Routes>
-            </div>
-        </BrowserRouter>
-    );
+function App() {
+  return (
+    <Router>
+      <CssBaseline />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

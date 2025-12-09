@@ -43,7 +43,7 @@ public class AuthController {
                 .token(jwtToken)
                 .username(user.getDisplayName())
                 .role(user.getRole())
-                .starWarsCharacter(user.getStarWarsCharacter())
+                .starWarsCharacter(user.getStarWarsCharacter()) 
                 .build();
                 
         return ResponseEntity.ok(response);

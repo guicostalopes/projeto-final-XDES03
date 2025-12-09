@@ -1,12 +1,12 @@
 package backend.final_project.entity;
 
-import java.util.Collection; // 1. IMPORTAR
-import java.util.List; // 2. IMPORTAR
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
-import org.springframework.security.core.GrantedAuthority; // 3. IMPORTAR
-import org.springframework.security.core.authority.SimpleGrantedAuthority; // 4. IMPORTAR
-import org.springframework.security.core.userdetails.UserDetails; // 5. IMPORTAR
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import backend.final_project.entity.enums.Role;
 import jakarta.persistence.*;
@@ -15,14 +15,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @Table(name = "users")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UserEntity implements UserDetails {
     
     @Id
@@ -43,35 +41,24 @@ public class UserEntity implements UserDetails {
     private String password;
     
     @Column(unique = true)
-    private String starWarsCharacter;
+    private String starWarsCharacter; 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-   @Override
+    @Override
     public String getUsername() {
         return this.email; 
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
+    public boolean isAccountNonExpired() { return true; }
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
+    public boolean isAccountNonLocked() { return true; }
     @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
+    public boolean isCredentialsNonExpired() { return true; }
     @Override
-    public boolean isEnabled() {
-        return true;
-    }
+    public boolean isEnabled() { return true; }
 }

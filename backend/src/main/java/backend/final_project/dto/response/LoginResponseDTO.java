@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponseDTO {
-
     private String token;
     private String username; 
-    private Role role;
-    private String starWarsCharacter;
+    private Role role; 
+    private String starWarsCharacter; 
 }
