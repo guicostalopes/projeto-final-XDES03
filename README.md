@@ -1,5 +1,5 @@
-# Integrantes: Guilherme Costa Lopes
-# Perfil github: https://github.com/guicostalopes
+## Integrantes: Guilherme Costa Lopes
+## Perfil github: https://github.com/guicostalopes
 
 # Sistema de Gerenciamento de Supermercado
 
